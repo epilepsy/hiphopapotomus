@@ -1,0 +1,19 @@
+<%= simple_form_for(@note) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :patient %>
+    <%= f.association :user %>
+    <%= f.input :primary_author %>
+    <%= f.input :primary_institution %>
+    <%= f.input :body_text %>
+    <%= f.input :ocr %>
+    <%= f.input :type %>
+    <%= f.input :title %>
+    <%= f.input :filing_date %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

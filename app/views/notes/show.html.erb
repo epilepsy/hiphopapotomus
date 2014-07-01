@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @note.patient %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @note.user %>
+</p>
+
+<p>
+  <strong>Primary author:</strong>
+  <%= @note.primary_author %>
+</p>
+
+<p>
+  <strong>Primary institution:</strong>
+  <%= @note.primary_institution %>
+</p>
+
+<p>
+  <strong>Body text:</strong>
+  <%= @note.body_text %>
+</p>
+
+<p>
+  <strong>Ocr:</strong>
+  <%= @note.ocr %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @note.type %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @note.title %>
+</p>
+
+<p>
+  <strong>Filing date:</strong>
+  <%= @note.filing_date %>
+</p>
+
+<%= link_to 'Edit', edit_note_path(@note) %> |
+<%= link_to 'Back', notes_path %>
