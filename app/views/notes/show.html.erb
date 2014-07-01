@@ -1,49 +1,36 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Note -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Note %></h1>
+</div>
 
-<p>
-  <strong>Patient:</strong>
-  <%= @note.patient %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:primary_author) %></dt>
+      <dd><pre class="prettyprint"><%= @note.primary_author %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:primary_institution) %></dt>
+      <dd><pre class="prettyprint"><%= @note.primary_institution %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:body_text) %></dt>
+      <dd><pre class="prettyprint"><%= @note.body_text %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:ocr) %></dt>
+      <dd><pre class="prettyprint"><%= @note.ocr %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:type) %></dt>
+      <dd><pre class="prettyprint"><%= @note.type %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
+      <dd><pre class="prettyprint"><%= @note.title %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:filing_date) %></dt>
+      <dd><pre class="prettyprint"><%= @note.filing_date %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @note.user %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              notes_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_note_path(@note), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              note_path(@note),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Primary author:</strong>
-  <%= @note.primary_author %>
-</p>
-
-<p>
-  <strong>Primary institution:</strong>
-  <%= @note.primary_institution %>
-</p>
-
-<p>
-  <strong>Body text:</strong>
-  <%= @note.body_text %>
-</p>
-
-<p>
-  <strong>Ocr:</strong>
-  <%= @note.ocr %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @note.type %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @note.title %>
-</p>
-
-<p>
-  <strong>Filing date:</strong>
-  <%= @note.filing_date %>
-</p>
-
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
