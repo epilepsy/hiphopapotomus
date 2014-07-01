@@ -1,4 +1,5 @@
 ActiveAdmin.register Charge do
+  permit_params :service_date, :code
 
   
   # See permitted parameters documentation:
