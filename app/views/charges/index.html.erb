@@ -1,31 +1,38 @@
-<h1>Listing charges</h1>
-
-<table>
+<%- model_class = Charge -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Charge %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Service date</th>
-      <th>User</th>
-      <th>Code</th>
-      <th>Note</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:service_date) %></th>
+      <th><%= model_class.human_attribute_name(:code) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @charges.each do |charge| %>
       <tr>
+        <td><%= charge.id %></td>
         <td><%= charge.service_date %></td>
-        <td><%= charge.user %></td>
         <td><%= charge.code %></td>
-        <td><%= charge.note %></td>
-        <td><%= link_to 'Show', charge %></td>
-        <td><%= link_to 'Edit', edit_charge_path(charge) %></td>
-        <td><%= link_to 'Destroy', charge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l charge.created_at, format: :long %></td>
+        <td>
+          <%= link_to charge_path(charge), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to charge_path(charge), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Charge', new_charge_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_charge_path,
+            :class => 'btn btn-primary' %>

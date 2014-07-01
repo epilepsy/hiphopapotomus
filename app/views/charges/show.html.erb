@@ -1,24 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Charge -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Charge %></h1>
+</div>
 
-<p>
-  <strong>Service date:</strong>
-  <%= @charge.service_date %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:service_date) %></dt>
+      <dd><pre class="prettyprint"><%= @charge.service_date %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:code) %></dt>
+      <dd><pre class="prettyprint"><%= @charge.code %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @charge.user %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              charges_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_charge_path(@charge), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              charge_path(@charge),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Code:</strong>
-  <%= @charge.code %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @charge.note %>
-</p>
-
-<%= link_to 'Edit', edit_charge_path(@charge) %> |
-<%= link_to 'Back', charges_path %>
