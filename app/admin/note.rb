@@ -1,4 +1,5 @@
 ActiveAdmin.register Note do
+  permit_params :primary_author, :primary_institution, :body_text, :ocr, :type, :title, :filing_date
 
   
   # See permitted parameters documentation:
